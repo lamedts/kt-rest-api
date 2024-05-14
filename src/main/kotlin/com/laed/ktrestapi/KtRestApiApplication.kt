@@ -8,7 +8,7 @@ import org.springframework.boot.runApplication
 class KtRestApiApplication
 
 fun main(args: Array<String>) {
-	runApplication<KtRestApiApplication>(*args) {
-		setBannerMode(Banner.Mode.OFF)
-	}
+    runApplication<KtRestApiApplication>(*args) {
+        setBannerMode(Banner.Mode.OFF)
+    }
 }
