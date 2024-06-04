@@ -1,8 +1,7 @@
 package com.laed.ktrestapi.controllers
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import com.laed.ktrestapi.model.GeneralMessageResponse
+import org.springframework.web.bind.annotation.*
 
 
 @RestController
@@ -10,5 +9,17 @@ import org.springframework.web.bind.annotation.RestController
 class HelloController {
 
     @GetMapping("/hello")
-    fun hello() = "hello kotlin with spring"
+    fun getHello(@RequestParam("name", defaultValue = "World") name: String): GeneralMessageResponse {
+        return GeneralMessageResponse("Hello, $name")
+    }
+
+    @PostMapping("/hello")
+    fun postHello(@RequestParam("name", defaultValue = "World") name: String): GeneralMessageResponse {
+        return GeneralMessageResponse("Hello, $name (from post)")
+    }
+
+    @RequestMapping("/testErr")
+    fun testErr() {
+        throw Exception("test exception")
+    }
 }
